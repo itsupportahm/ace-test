@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-88888
-=======
-1111
->>>>>>> parent of 1177fef... Revert "my first test"
