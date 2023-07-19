@@ -6,7 +6,7 @@ services:
       context: ./staging
       dockerfile: Dockerfile
     # Container name for staging
-    container_name: staging
+    container_name: SZ_staging
     # Map port 3000 in the container to port 3000 on the host (staging)
     ports:
       - "3000:3000"
@@ -21,11 +21,26 @@ services:
       context: ./production
       dockerfile: Dockerfile
     # Container name for production
-    container_name: production
+    container_name: SZ_production
     # Map port 80 in the container to port 80 on the host (production)
     ports:
       - "8080:3000"
     # Optional: Environment variables specific to production
     environment:
       NODE_ENV: production
+    # You should set up a separate database container for production
+
+  development:
+    # Use the same image as staging
+    build:
+      context: ./dev
+      dockerfile: Dockerfile
+    # Container name for production
+    container_name: SZ_development
+    # Map port 80 in the container to port 80 on the host (production)
+    ports:
+      - "8081:3000"
+    # Optional: Environment variables specific to production
+    environment:
+      NODE_ENV: development
     # You should set up a separate database container for production
