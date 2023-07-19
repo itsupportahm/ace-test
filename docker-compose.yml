@@ -1,0 +1,31 @@
+version: '3'
+services:
+  staging:
+    # Use the image built in Step 2
+    build:
+      context: ./staging
+      dockerfile: Dockerfile
+    # Container name for staging
+    container_name: staging
+    # Map port 3000 in the container to port 3000 on the host (staging)
+    ports:
+      - "3000:3000"
+    # Optional: Environment variables specific to staging (e.g., database connection strings, etc.)
+    environment:
+      NODE_ENV: staging
+    # You can link this to a separate database container for staging if required
+
+  production:
+    # Use the same image as staging
+    build:
+      context: ./production
+      dockerfile: Dockerfile
+    # Container name for production
+    container_name: production
+    # Map port 80 in the container to port 80 on the host (production)
+    ports:
+      - "8080:3000"
+    # Optional: Environment variables specific to production
+    environment:
+      NODE_ENV: production
+    # You should set up a separate database container for production
