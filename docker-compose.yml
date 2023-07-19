@@ -33,7 +33,7 @@ services:
   development:
     # Use the same image as staging
     build:
-      context: ./dev
+      context: ./development
       dockerfile: Dockerfile
     # Container name for production
     container_name: SZ_development
